@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Multi Next.js App
 
-## Getting Started
+Next.js 16과 React 19 기반의 웹 애플리케이션 프로젝트입니다.
 
-First, run the development server:
+## 기술 스택
+
+- **프레임워크**: Next.js 16 (App Router)
+- **UI 라이브러리**: React 19
+- **스타일링**: Tailwind CSS 4
+- **UI 컴포넌트**: shadcn/ui (new-york 스타일)
+- **아이콘**: lucide-react
+- **언어**: TypeScript
+
+## 시작하기
+
+### 설치
+
+```bash
+npm install
+```
+
+### 개발 서버 실행
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000)에서 결과를 확인할 수 있습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 프로덕션 빌드
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+### 린트 검사
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 프로젝트 구조
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+├── app/                 # App Router 라우트 및 페이지
+│   ├── layout.tsx       # 루트 레이아웃
+│   ├── page.tsx         # 홈 페이지
+│   └── globals.css      # 전역 스타일
+├── components/          # 재사용 가능한 컴포넌트
+│   └── ui/              # shadcn/ui 컴포넌트
+├── lib/                 # 유틸리티 함수
+│   └── utils.ts         # cn() 등 헬퍼 함수
+├── public/              # 정적 파일
+└── docs/                # 프로젝트 문서
+```
 
-## Deploy on Vercel
+## shadcn/ui 컴포넌트 추가
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npx shadcn@latest add [컴포넌트명]
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+예시:
+```bash
+npx shadcn@latest add button
+npx shadcn@latest add card
+npx shadcn@latest add input
+```
+
+## 경로 별칭
+
+`@/*` 별칭을 사용하여 프로젝트 루트를 참조할 수 있습니다:
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+```
+
+## 참고 문서
+
+- [Next.js 공식 문서](https://nextjs.org/docs)
+- [Tailwind CSS 문서](https://tailwindcss.com/docs)
+- [shadcn/ui 문서](https://ui.shadcn.com)
